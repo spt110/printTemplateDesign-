@@ -61,9 +61,10 @@ function drop(ev) {
 }
 
 function setNodeData(element) {
+    //设置节点数据
     var data={ x: element.style.top, y: element.style.left, columnName: element.innerHTML };
-    data.width=element.offsetWidth;
-    data.height=element.offsetHeight;
+    data.width=element.clientWidth;
+    data.height=element.clientHeight;
     saveData[element.id] = data;
     setDisplayData(data);
 }
@@ -72,6 +73,8 @@ function setDisplayData(id) {
     if (data) {
         document.getElementById("txtTop").value = data.y.replace("px", "");
         document.getElementById("txtLeft").value = data.x.replace("px", "");
+        document.getElementById("txtWidth").value = data.width;
+        document.getElementById("txtHeigth").value = data.height;
     }
 }
 function showSaveData() {
@@ -93,6 +96,7 @@ function txtLeft_onkeyup() {
     if (currentNode) {
         currentNode.style.left = ev.target.value + "px";
     }
+    setNodeData(currentNode);
 }
 
 function txtTop_onkeyup() {
@@ -100,6 +104,21 @@ function txtTop_onkeyup() {
     if (currentNode) {
         currentNode.style.top = ev.target.value + "px";
     }
+    setNodeData(currentNode);
+}
+function txtWidth_onkeyup() {
+    var ev = window.event;
+    if (currentNode) {
+        currentNode.style.width = ev.target.value + "px";
+    }
+    setNodeData(currentNode);
+}
+function txtHeight_onkeyup() {
+    var ev = window.event;
+    if (currentNode) {
+        currentNode.style.height = ev.target.value + "px";
+    }
+    setNodeData(currentNode);
 }
 
 // function getResizeBRDiv() {
