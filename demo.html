@@ -4,42 +4,55 @@
 <head>
     <style>
         .panel-heading {
-    color: #333;
-    background-color: #f5f5f5;
-    border-color: #ddd;
-}
-.panel-heading {
-    color: #333;
-    background-color: #f5f5f5;
-    border-color: #ddd;
+            color: #333;
+            background-color: #f5f5f5;
+            border-color: #ddd;
+        }
 
-        padding: 10px 15px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-        border-bottom: 0;
-}
+        .panel-heading {
+            color: #333;
+            background-color: #f5f5f5;
+            border-color: #ddd;
 
-.field_node{
-    width: auto;
-    height: 16px; 
-    background-color: rgb(204, 255, 255);
-    color: green; 
-    font-size: 12px; 
-    border: 1px dashed rgb(204, 204, 204);
-    display:inline-block;
-   
-}
-.field_node:hover {
-cursor:pointer;
-}
+            padding: 10px 15px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border-bottom: 0;
+        }
+
+        .field_node {
+            width: auto;
+            height: 16px;
+            background-color: rgb(204, 255, 255);
+            color: green;
+            font-size: 12px;
+            border: 1px dashed rgb(204, 204, 204);
+            display: inline-block;
+
+        }
+
+        .field_node:hover {
+            cursor: pointer;
+        }
+
+        .resizeBR {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            cursor: nw-resize;
+            background: url(resize.png) no-repeat;
+        }
     </style>
-<script type="text/javascript"  src="template_drop.js"></script>
-<script type="text/javascript"  src="json2.js"></script>
+    <script type="text/javascript" src="template_drop.js"></script>
+    <script type="text/javascript" src="json2.js"></script>
 
 </head>
 
 <body>
-    <div> <input  type="button"  onclick="showSaveData()" value="保存" /> </div>
+    <div> <input type="button" onclick="showSaveData()" value="保存" /> </div>
     <div style="float:left;width:10%;height:500px;">
         <div class="panel-group">
             <div class="panel panel-default">
@@ -48,19 +61,20 @@ cursor:pointer;
                 </div>
                 <div id="collapseOne1" class="panel-collapse collapse in">
                     <div class="panel-body">
-                       
-        <div class="field_node" draggable="true" id="node_1"  ondragstart="drag(event)">#买家姓名#</div>
-        <div  class="field_node" draggable="true" id="node_2" ondragstart="drag(event)">#手机号#</div>
-        <div  class="field_node" draggable="true" id="node_3" ondragstart="drag(event)" >#买家姓名#</div>
-        <div  class="field_node" draggable="true" id="node_4" ondragstart="drag(event)" >#联系人#</div>
-        <div  class="field_node" draggable="true" id="node_5" ondragstart="drag(event)" >#收货地址#</div>
-        <div  class="field_node" draggable="true" id="node_6" ondragstart="drag(event)">#手机号#</div>
+
+                        <div class="field_node" draggable="true" id="node_1" ondragstart="drag(event)">#买家姓名#</div>
+                        <div class="field_node" draggable="true" id="node_2" ondragstart="drag(event)">#手机号#</div>
+                        <div class="field_node" draggable="true" id="node_3" ondragstart="drag(event)">#买家姓名#</div>
+                        <div class="field_node" draggable="true" id="node_4" ondragstart="drag(event)">#联系人#</div>
+                        <div class="field_node" draggable="true" id="node_5" ondragstart="drag(event)">#收货地址#</div>
+                        <div class="field_node" draggable="true" id="node_6" ondragstart="drag(event)">#手机号#</div>
                     </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne2" aria-expanded="true">订单明细</a></h4>
+                    <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne2"
+                            aria-expanded="true">订单明细</a></h4>
                 </div>
                 <div id="collapseOne2" class="panel-collapse collapse in" aria-expanded="true" style="">
                     <div class="panel-body">
@@ -73,25 +87,29 @@ cursor:pointer;
             </div>
         </div>
     </div>
-    <div  ondrop="drop(event)" ondragover="allowDrop(event)" style="position: relative;;float: left; width: 70%; height: 500px; background-image: url('ems.jpg'); background-repeat: no-repeat;" id="content">
+    <div ondrop="drop(event)" ondragover="allowDrop(event)" style="position: relative;;float: left; width: 70%; height: 500px; background-image: url('ems.jpg'); background-repeat: no-repeat;"
+        id="content">
     </div>
     <div id="set_list" style="height: 393px; width: 20%; float: right;">
-                        <div class="title" style="padding-top: 0px;">
-                            属性
-                        </div>
-                        <div>
-                            <span class="head_text" style="text-align: right; width: 70px;">字段</span><span id="txtColumnName" style="width: 180px;" type="text" ></span>
-                        </div>
-                        <div>
-                            <span class="head_text" style="text-align: right; width: 70px;">top</span><input id="txtTop"  onkeyup="txtTop_onkeyup()" style="width: 180px;" type="text" />px
-                        </div>
-                         <div>
-                            <span class="head_text" style="text-align: right; width: 70px;">left</span><input id="txtLeft" onkeyup="txtLeft_onkeyup()" style="width: 180px;" type="text" />px
-                        </div>
-                       
+        <div class="title" style="padding-top: 0px;">
+            属性
+        </div>
+        <div>
+            <span class="head_text" style="text-align: right; width: 70px;">字段</span><span id="txtColumnName" style="width: 180px;"
+                type="text"></span>
+        </div>
+        <div>
+            <span class="head_text" style="text-align: right; width: 70px;">top</span><input id="txtTop" onkeyup="txtTop_onkeyup()"
+                style="width: 180px;" type="text" />px
+        </div>
+        <div>
+            <span class="head_text" style="text-align: right; width: 70px;">left</span><input id="txtLeft" onkeyup="txtLeft_onkeyup()"
+                style="width: 180px;" type="text" />px
+        </div>
 
-                     </div>
-                    </div>
+
+    </div>
+    </div>
 </body>
 
 </html>

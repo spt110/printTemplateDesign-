@@ -43,9 +43,9 @@ function drop(ev) {
         var y = ev.offsetY + "px";
         distElement.style.top = y;
         distElement.style.left = x;
-        setNodeData(distElement.id, { x: x, y: y, columnName: distElement.innerHTML });
-
-    }
+        //setNodeData(distElement.id, { x: x, y: y, columnName: distElement.innerHTML });
+        setNodeData(distElement);
+        }
     else {
         //移动
         var srcScreenX = data.screenX;
@@ -56,14 +56,15 @@ function drop(ev) {
         var left = Number(element.offsetLeft) + x + "px";
         element.style.top = top;
         element.style.left = left;
-        setNodeData(element.id, { x: top, y: left, columnName: element.innerHTML });
+        setNodeData(element);
     }
-
-
 }
 
-function setNodeData(id, data) {
-    saveData[id] = data;
+function setNodeData(element) {
+    var data={ x: element.style.top, y: element.style.left, columnName: element.innerHTML };
+    data.width=element.offsetWidth;
+    data.height=element.offsetHeight;
+    saveData[element.id] = data;
     setDisplayData(data);
 }
 function setDisplayData(id) {
@@ -78,6 +79,7 @@ function showSaveData() {
 }
 function node_onmousedown() {
     var ev = window.event;
+    if (ev.target.tagName == "SPAN") { return false; }
     if (currentNode) {
         currentNode.style.background = null;
     }
@@ -99,3 +101,9 @@ function txtTop_onkeyup() {
         currentNode.style.top = ev.target.value + "px";
     }
 }
+
+// function getResizeBRDiv() {
+//     var span = document.createElement("span");
+//     span.setAttribute("class", "resizeBR");
+//     return span;
+// }
