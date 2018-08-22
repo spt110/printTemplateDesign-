@@ -1,5 +1,5 @@
 var saveData = {};//保存数据
-var currentNode = null;//当前选择的节点(绑定字段)
+var currentNode = null;//当前选择的节点
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -62,9 +62,11 @@ function drop(ev) {
 
 function setNodeData(element) {
     //设置节点数据
-    var data={ x: element.style.top, y: element.style.left, columnName: element.innerHTML };
+    var data={ x: element.style.top, y: element.style.left, printText: element.innerHTML };
     data.width=element.clientWidth;
     data.height=element.clientHeight;
+    data.color=element.style.color;
+    data.fontSize=element.style["fontSize"];
     saveData[element.id] = data;
     setDisplayData(data);
 }
@@ -75,6 +77,9 @@ function setDisplayData(id) {
         document.getElementById("txtLeft").value = data.x.replace("px", "");
         document.getElementById("txtWidth").value = data.width;
         document.getElementById("txtHeigth").value = data.height;
+        document.getElementById("txtColor").value = data.color;
+        document.getElementById("txtFontSize").value="";
+        document.getElementById("txtFontSize").value = data.fontSize.replace("px","");
     }
 }
 function showSaveData() {
@@ -117,6 +122,20 @@ function txtHeight_onkeyup() {
     var ev = window.event;
     if (currentNode) {
         currentNode.style.height = ev.target.value + "px";
+    }
+    setNodeData(currentNode);
+}
+function txtColor_onkeyup() {
+    var ev = window.event;
+    if (currentNode) {
+        currentNode.style.color = ev.target.value;
+    }
+    setNodeData(currentNode);
+}
+function txtFontSize_onkeyup(){
+    var ev = window.event;
+    if (currentNode) {
+        currentNode.style['font-size'] = ev.target.value+"px";
     }
     setNodeData(currentNode);
 }
